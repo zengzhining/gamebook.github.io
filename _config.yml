@@ -4,6 +4,7 @@ email: 272682545@qq.com
 description: > # this means to ignore newlines until "twitter_username:"
     个人游戏开发的一些总结
 
+show_excerpts: true
 # social links
 twitter_username: Pure_studio_sad
 github_username:  zengzhining
