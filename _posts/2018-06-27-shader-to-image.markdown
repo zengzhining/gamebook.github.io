@@ -7,13 +7,13 @@ categories: Unity
 ---
 最近在想制作Gameboy风格的平台游戏，所以遇到一个需求就是需要将本来不是Gameboy风格的图片转换成Gameboy风格。因为之前购买了fx2d的插件，里面具有Gameboy的shader，只需要赋值到SpriteRenderer上即可。所以主要问题就是在Unity中将其图片导出到本地。
 
-##### 这样制作的好处
+### 这样制作的好处
 
 运行效率比较高，通过牺牲内存来换取GPU性能，如果比较多的精灵使用一些耗费性能的静态滤镜Shader可以通过这样优化使得不至于发热变卡。
 
 批量处理，比如你需要把图片置灰，如果让美工一个一个处理还是比较低效。
 
-##### 最后输出的结果
+### 最后输出的结果
 比如原图是这个样子
 
 ![](/assets/tmp114036d2.png)
@@ -22,17 +22,17 @@ categories: Unity
 
 ![](/assets/tmp01d94655.png)
 
-#### 涉及到的知识
+### 涉及到的知识
 * RenderTexture通过Graphics.Blit截取图片
 * unity编辑器拓展wizard弹窗进行批量创建
 
 
-##### 处理方法简介
+### 处理方法简介
 通过Graphics.Blit进行把图片纹理绘制到RenderTexture，然后将RendterTexture纹理绘制到Texture2D中然后保存到本地。
 
 很简单，下面结合代码讲解下。
 
-##### 具体代码
+### 具体代码
 下面这个核心的逻辑，通过下面代码可以将图片和所需要的材质合并然后输出转换到的图片
 {% highlight C# %}
 
