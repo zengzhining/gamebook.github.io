@@ -42,7 +42,10 @@ minima:
 # - about.html
 
 # Build settings
-theme: minima
+#theme: minima
+theme: tale
+permalink:  /:year-:month-:day/:title
+paginate:   5
 
 plugins:
  - jekyll-feed

@@ -1,6 +1,6 @@
 ---
-layout: page
-title: 我是谁
+layout: post
+title: Codinggamer
 permalink: /about/
 ---
 ![](/assets/dev_icon128.jpg)

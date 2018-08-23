@@ -1,20 +1,29 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<html lang="en">
 
-  {%- include head.html -%}
+  {% include head.html %}
 
   <body>
-
-    {%- include header.html -%}
-
-    <main class="page-content" aria-label="Content">
-      <div class="wrapper">
-        {{ content }}
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="{{ site.baseurl }}/">
+          <h2 class="nav-title">{{ site.title }}</h2>
+        </a>
+        <ul>
+          <li><a href="{{ '/about' | prepend: site.baseurl }}">About</a></li>
+          <li><a href="{{ site.baseurl }}/">Posts</a></li>
+        </ul>
       </div>
+    </nav>
+
+    <main>
+      {{ content }}
     </main>
 
-    {%- include footer.html -%}
-
+    <footer>
+      <span>
+        &copy; <time datetime="{{ site.time }}">{{ site.time | date: '%Y' }}</time> {{ site.author.name }}. Made with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+      </span>
+    </footer>
   </body>
-
 </html>

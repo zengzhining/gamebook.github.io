@@ -2,33 +2,34 @@
 layout: default
 ---
 
-<div class="home">
-  {%- if page.title -%}
-    <h1 class="page-heading">{{ page.title }}</h1>
-  {%- endif -%}
+<div class="catalogue">
+  {% for post in paginator.posts %}
+    <a href="{{ post.url | prepend: site.baseurl }}" class="catalogue-item">
+      <div>
+        <time datetime="{{ post.date }}" class="catalogue-time">{{ post.date | date: "%B %d, %Y" }}</time>
+        <h1 class="catalogue-title">{{ post.title }}</h1>
+        <div class="catalogue-line"></div>
 
-  {{ content }}
+        <p>
+          <!-- {{ post.content | strip_html | truncatewords: 30 }} -->
+          {{ post.excerpt }}   
+          <!-- <p><h3>
+          <a href="{{ post.url }}">ReadMore &raquo;</a>
+          </h3></p> -->
+        </p>
 
-  {%- if site.posts.size > 0 -%}
-    <ul class="post-list">
-      {%- for post in site.posts -%}
-      <li>
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-	<span class="post-meta">{{ post.date | date: date_format }} • {{ post.categories }}</span>
-        <h3>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-	  <p>{{ post.excerpt  }} </p>
-        </h3>
-	
-        {%- if site.show_excerpts -%}
-          {{ post.excerpt }}
-        {%- endif -%}
-      </li>
-      {%- endfor -%}
-    </ul>
+      </div>
+    </a>
+  {% endfor %}
+</div>
 
-  {%- endif -%}
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="left arrow">&#8592;</a>
+  {% endif %}
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="right arrow">&#8594;</a>
+  {% endif %}
 
+  <span>{{ paginator.page }}</span>
 </div>
