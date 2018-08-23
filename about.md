@@ -1,9 +1,27 @@
 ---
 layout: page
-title: 关于我
+title: 我是谁
 permalink: /about/
 ---
+我目前是一名独立开发游戏的开发者，在开始独立开发之前担任过三年的游戏程序员。
+<br/>
+<br/>
 
-#### 我是一名开发游戏的程序员
+目前主要在Unity下进行开发，对游戏性层面开发比较有兴趣。
+<br/>
+<br/>
 
-目前主要在Unity下进行开发，对游戏性层面开发比较有兴趣。欢迎指教
+# 个人作品
+<br/>
+####  踢飞那些海盗(开发中)
+![](/assets/kick_pirates.gif)
+<br/>
+<br/>
+
+#### 你算老几
+![](/assets/Calculate.gif)
+
+#### 信仰之跃
+![](/assets/fleeaway.gif)
+
+
