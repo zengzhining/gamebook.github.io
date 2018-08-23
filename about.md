@@ -3,6 +3,8 @@ layout: page
 title: 我是谁
 permalink: /about/
 ---
+![](/assets/dev_icon128.jpg)
+
 我目前是一名独立开发游戏的开发者，在开始独立开发之前担任过三年的游戏程序员。
 <br/>
 <br/>
@@ -21,7 +23,17 @@ permalink: /about/
 #### 你算老几
 ![](/assets/Calculate.gif)
 
+<br/>
+
 #### 信仰之跃
 ![](/assets/fleeaway.gif)
 
+<br/>
+<br/>
 
+
+#### 游戏链接
+
+[游戏主页](https://fun.codinggamer.net)
+
+![](/assets/google_dev_banner.jpg)
