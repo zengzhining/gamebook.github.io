@@ -1,0 +1,773 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Unity拓展编辑器入门指南 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2" data-path="EditorTutorial.html">
+            
+                <a href="EditorTutorial.html">
+            
+                    
+                    Unity拓展编辑器入门指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Unity拓展编辑器入门指南</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>Unity&#x91CC;&#x9762;&#x6BD4;&#x8F83;&#x51FA;&#x8272;&#x6211;&#x4E5F;&#x5F88;&#x559C;&#x6B22;&#x7684;&#x4E00;&#x4E2A;&#x529F;&#x80FD;&#x5C31;&#x662F;&#x5B83;&#x6613;&#x4E8E;&#x62D3;&#x5C55;&#x7684;&#x7F16;&#x8F91;&#x5668;&#x3002;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#x62D3;&#x5C55;&#x7F16;&#x8F91;&#x5668;&#x5BF9;&#x4E8E;&#x6E38;&#x620F;&#x8FD0;&#x884C;&#x6548;&#x7387;&#x4E0D;&#x662F;&#x6709;&#x4EC0;&#x4E48;&#x5927;&#x7684;&#x5E2E;&#x52A9;&#xFF0C;&#x4F46;&#x662F;<strong>&#x6709;&#x52A9;&#x4E8E;&#x5F00;&#x53D1;&#x6548;&#x7387;&#x7684;&#x63D0;&#x9AD8;</strong>&#x3002;</p>
+<p>&#x6BD5;&#x7ADF;&#x5DE5;&#x6B32;&#x5584;&#x5176;&#x4E8B;&#xFF0C;&#x5FC5;&#x5148;&#x5229;&#x5176;&#x5668;&#x3002;</p>
+<p>&#x8FD9;&#x6B21;&#x4ECB;&#x7ECD;&#x4E00;&#x5171;&#x4EE5;&#x4E0B;&#x8FD9;&#x4E9B;&#x62D3;&#x5C55;&#x7F16;&#x8F91;&#x5668;&#x7684;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<ul>
+<li>OnDrawGizmos </li>
+<li>OnInspectorGUI  </li>
+<li>OnSceneGUI </li>
+<li>MenuItem &#x4E0E; EditorWindow  </li>
+<li>ScriptableWizard</li>
+<li>ScriptObject</li>
+<li>Attributes</li>
+<li>AssetProcess</li>
+</ul>
+<h1 id="ondrawgizmos">OnDrawGizmos</h1>
+<p>OnDrawGizmos&#x662F;&#x5728;MonoBehaviour&#x4E0B;&#x7684;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x53EF;&#x4EE5;&#x7ED8;&#x5236;&#x51FA;&#x4E00;&#x4E9B;Gizmos&#x6765;&#x4F7F;&#x5F97;&#x5176;&#x4E00;&#x4E9B;&#x53C2;&#x6570;&#x65B9;&#x4FBF;&#x5728;Scene&#x7A97;&#x53E3;&#x67E5;&#x770B;&#x3002;</p>
+<p>&#x6BD4;&#x5982;&#x6211;&#x4EEC;&#x6709;&#x4E00;&#x4E2A;&#x6CBF;&#x7740;&#x8DEF;&#x70B9;&#x79FB;&#x52A8;&#x7684;&#x5E73;&#x53F0;&#xFF0C;&#x4E00;&#x822C;&#x7684;&#x64CD;&#x4F5C;&#x53EF;&#x80FD;&#x662F;&#x751F;&#x6210;&#x4E00;&#x5806;&#x65B0;&#x7684;&#x5B50;&#x7269;&#x4F53;&#x6765;&#x786E;&#x5B9A;&#x548C;&#x8BBE;&#x7F6E;&#x4F4D;&#x7F6E;&#xFF0C;&#x4F46;&#x5176;&#x5B9E;&#x8FD9;&#x6837;&#x4F1A;&#x6709;&#x70B9;&#x8D58;&#x4F59;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7684;&#x53EA;&#x662F;&#x4E00;&#x4E2A;<strong>Vector2/Vector3</strong>&#x6570;&#x7EC4;&#x3002;&#x800C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<strong>OnDrawGizmos</strong>&#x65B9;&#x6CD5;&#x5728;&#x7F16;&#x8F91;&#x5668;&#x7ED8;&#x5236;&#x51FA;&#x8FD9;&#x4E9B;<strong>Vector2/Vector3</strong>&#x7684;&#x6570;&#x7EC4;&#x70B9;&#x3002;</p>
+<p><img src="res/EditorTutorial/Gizmo.png" alt="&#x53EF;&#x4EE5;&#x7ED8;&#x5236;&#x51FA;&#x8DEF;&#x70B9;&#x548C;&#x8DEF;&#x5F84;"></p>
+<p>&#x5B8C;&#x6574;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-csharp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">DrawGizmoTest</span> : <span class="hljs-title">MonoBehaviour</span>
+{
+    <span class="hljs-keyword">public</span> Vector2[] poses;
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnDrawGizmos</span>(<span class="hljs-params"></span>) 
+    </span>{
+        Color originColor = Gizmos.color;
+        Gizmos.color = Color.red;
+        <span class="hljs-keyword">if</span>( poses!=<span class="hljs-keyword">null</span> &amp;&amp; poses.Length&gt;<span class="hljs-number">0</span> )
+        {
+            <span class="hljs-comment">//Draw Sphere</span>
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; poses.Length; i++)
+            {
+                Gizmos.DrawSphere( poses[i], <span class="hljs-number">0.2</span>f );
+            }
+            <span class="hljs-comment">//Draw Line</span>
+            Gizmos.color = Color.yellow;
+            Vector2 lastPos = Vector2.zero;
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; poses.Length; i++)
+            {
+                <span class="hljs-keyword">if</span>( i &gt; <span class="hljs-number">0</span> )
+                {
+                    Gizmos.DrawLine( lastPos, poses[i] );
+                }
+                lastPos = poses[i];
+            }
+        }
+        Gizmos.color = originColor;
+    } 
+}
+</code></pre>
+<h1 id="oninspectorgui">OnInspectorGUI</h1>
+<p>&#x5728;&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x4E2D;&#x5E38;&#x5E38;&#x9700;&#x8981;&#x5728;&#x7F16;&#x8F91;&#x5668;&#x4E0A;&#x5BF9;&#x67D0;&#x4E2A;&#x7279;&#x5B9A;&#x7684;Component&#x8FDB;&#x884C;&#x4E00;&#x4E9B;&#x64CD;&#x4F5C;&#xFF0C;&#x6BD4;&#x5982;&#x5728;<strong>Inspector</strong>&#x754C;&#x9762;&#x4E0A;&#x6709;&#x4E00;&#x4E2A;&#x6309;&#x94AE;&#x53EF;&#x4EE5;&#x89E6;&#x53D1;&#x4E00;&#x6BB5;&#x4EE3;&#x7801;&#x3002;</p>
+<p><img src="res/EditorTutorial/Inspector.png" alt=""></p>
+<p>&#x8FD9;&#x79CD;&#x5C5E;&#x4E8E;&#x7F16;&#x8F91;&#x5668;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x4E00;&#x822C;&#x662F;&#x5728;Editor&#x6587;&#x4EF6;&#x5939;&#x4E2D;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x7EE7;&#x627F;&#x81EA;Editor&#x7684;&#x811A;&#x672C;&#xFF1A;</p>
+<p><img src="res/EditorTutorial/CreateEditorClass.gif" alt=""></p>
+<p>&#x4E4B;&#x540E;&#x7F16;&#x8F91;&#x7EE7;&#x627F;&#x81EA;<strong>UnityEditor.Editor</strong>,&#x8FD9;&#x91CC;&#x6CE8;&#x610F;&#x662F;&#x5FC5;&#x987B;&#x5728;&#x7C7B;&#x4E0A;&#x52A0;&#x5165;<strong>[CustomEditor(typeof(&#x7F16;&#x8F91;&#x5668;&#x811A;&#x672C;&#x7ED1;&#x5B9A;&#x7684;Monobehavior&#x7C7B;)]</strong>&#x7136;&#x540E;&#x91CD;&#x5199;&#x5B83;&#x7684;OnInspectorGUI&#x65B9;&#x6CD5;&#xFF1A;</p>
+<pre><code class="lang-csharp"><span class="hljs-keyword">using</span> UnityEditor;
+[CustomEditor(<span class="hljs-keyword">typeof</span>(InspectorTest))]
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">InspectorTestEditor</span> : <span class="hljs-title">Editor</span> 
+{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnInspectorGUI</span>(<span class="hljs-params"></span>) 
+    </span>{
+        <span class="hljs-keyword">base</span>.OnInspectorGUI();
+        <span class="hljs-keyword">if</span>(GUILayout.Button(<span class="hljs-string">&quot;Click Me&quot;</span>))
+        {
+            <span class="hljs-comment">//Logic</span>
+            InspectorTest ctr = target <span class="hljs-keyword">as</span> InspectorTest;
+        }
+    }
+}
+</code></pre>
+<p>&#x800C;&#x4E00;&#x822C;&#x800C;&#x8A00;&#x5728;Editor&#x7C7B;&#x4E2D;&#x64CD;&#x4F5C;&#x53D8;&#x91CF;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x4E00;&#x79CD;&#x662F;<strong>&#x901A;&#x8FC7;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x6216;&#x8005;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x6539;&#x52A8;Monobehaviour&#x7684;&#x53D8;&#x91CF;</strong>&#xFF0C;&#x4E00;&#x79CD;&#x662F;<strong>&#x901A;&#x8FC7;Editor&#x7C7B;&#x4E2D;&#x7684;serializedObject&#x6765;&#x6539;&#x52A8;&#x5BF9;&#x5E94;&#x53D8;&#x91CF;</strong>&#x3002;</p>
+<p>&#x6BD4;&#x5982;&#x6211;&#x8981;&#x628A;Monobehaviour&#x7684;&#x4E00;&#x4E2A;&#x516C;&#x5F00;&#x7684;Name&#x6539;&#x6210;Codinggamer</p>
+<p>&#x4F7F;&#x7528;<strong>&#x65B9;&#x6CD5;&#x4E00;</strong>&#xFF0C;&#x5728;Editor&#x4E2D;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x5199;&#xFF1A;</p>
+<pre><code class="lang-csharp"><span class="hljs-keyword">if</span>(GUILayout.Button(<span class="hljs-string">&quot;Click Me&quot;</span>))
+{
+    <span class="hljs-comment">//Logic</span>
+    InspectorTest ctr = target <span class="hljs-keyword">as</span> InspectorTest;
+    ctr.Name = <span class="hljs-string">&quot;Codinggamer&quot;</span>;
+}
+</code></pre>
+<p>&#x5728;&#x7F16;&#x8F91;&#x5668;&#x4E2D;&#x70B9;&#x51FB;&#x4F1A;&#x53D1;&#x73B0;Hierarchy&#x754C;&#x9762;&#x6CA1;&#x6709;&#x51FA;&#x73B0;&#x4E00;&#x822C;&#x6539;&#x52A8;&#x4E4B;&#x540E;&#x4F1A;&#x51FA;&#x73B0;&#x7684;&#x5C0F;&#x661F;&#x661F;&#xFF1A;</p>
+<p><img src="res/EditorTutorial/EditorBtnClickNoStar.gif" alt=""></p>
+<p>&#x4E00;&#x822C;&#x6539;&#x52A8;&#x662F;&#x4F1A;&#x51FA;&#x73B0;&#x5C0F;&#x661F;&#x661F;:</p>
+<p><img src="res/EditorTutorial/EditorBtnClickStar.gif" alt=""></p>
+<p>&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x4F60;&#x91CD;&#x65B0;&#x6253;&#x5F00;&#x573A;&#x666F;&#xFF0C;&#x4F1A;&#x53D1;&#x73B0;&#x6539;&#x52A8;&#x7684;&#x503C;&#x53C8;&#x4FBF;&#x56DE;&#x539F;&#x6765;&#x7684;&#x503C;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;<strong>&#x4F60;&#x7684;&#x6539;&#x52A8;&#x5E76;&#x6CA1;&#x6709;&#x751F;&#x6548;</strong>&#x3002;</p>
+<p>&#x800C;&#x6B64;&#x65F6;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x518D;&#x8C03;&#x7528;<strong>EditorUtility.SetDirty( Object )</strong>&#x65B9;&#x6CD5;&#x5373;&#x53EF;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x8981;&#x4F7F;&#x7528;<strong>&#x65B9;&#x6CD5;&#x4E8C;</strong>&#xFF0C;&#x5219;&#x9700;&#x8981;&#x5728;Editor&#x4EE3;&#x7801;&#x4E2D;&#x5199;&#xFF1A;</p>
+<pre><code class="lang-csharp"><span class="hljs-keyword">if</span>(GUILayout.Button(<span class="hljs-string">&quot;Click Me&quot;</span>))
+{
+    <span class="hljs-comment">//Logic</span>
+    serializedObject.FindProperty(<span class="hljs-string">&quot;Name&quot;</span>).stringValue = <span class="hljs-string">&quot;Codinggamer&quot;</span>;
+    serializedObject.ApplyModifiedProperties();
+}
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x4E0D;&#x9700;&#x8981;&#x8C03;&#x7528;<strong>EditorUtility.SetDirty( Object )&#x65B9;&#x6CD5;</strong>,&#x573A;&#x666F;&#x5C31;&#x5DF2;&#x7ECF;&#x4F1A;&#x51FA;&#x73B0;&#x6539;&#x52A8;&#x4E4B;&#x540E;&#x7684;&#x5C0F;&#x661F;&#x661F;&#xFF0C;&#x4FDD;&#x5B58;&#x91CD;&#x5F00;&#x573A;&#x666F;&#x4E4B;&#x540E;&#x4E5F;&#x4F1A;&#x53D1;&#x73B0;&#x5BF9;&#x5E94;&#x503C;&#x751F;&#x6548;&#x3002;</p>
+<h2 id="&#x8FD9;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x5B70;&#x4F18;&#x5B70;&#x52A3;&#xFF1F;">&#x8FD9;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x5B70;&#x4F18;&#x5B70;&#x52A3;&#xFF1F;</h2>
+<p>&#x4E00;&#x822C;&#x6765;&#x8BF4;&#x7528;&#x7B2C;&#x4E8C;&#x4E2A;&#x65B9;&#x6CD5;&#x6BD4;&#x8F83;&#x597D;&#xFF0C;&#x4F46;&#x5B9E;&#x9645;&#x4E0A;&#x6D89;&#x53CA;&#x903B;&#x8F91;&#x6BD4;&#x8F83;&#x591A;&#x7684;&#x65F6;&#x5019;&#x6211;&#x662F;&#x7528;&#x7B2C;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x3002;&#x7528;&#x7B2C;&#x4E8C;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x597D;&#x5904;&#x5728;&#x4E8E;&#x5B83;&#x662F;<strong>&#x5185;&#x7F6E;&#x4E86;&#x64A4;&#x9500;&#x529F;&#x80FD;</strong>&#xFF0C;&#x4E5F;&#x5C31;&#x610F;&#x5473;&#x7740;&#x4F60;&#x8C03;&#x7528;&#x6539;&#x52A8;&#x4E4B;&#x540E;&#x662F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x64A4;&#x9500;&#x6389;&#x7684;&#xFF0C;&#x800C;&#x7B2C;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x5C31;&#x4E0D;&#x80FD;&#x3002;</p>
+<h1 id="onscenegui">OnSceneGUI</h1>
+<p>&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4E5F;&#x662F;&#x5728;Editor&#x7C7B;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x662F;&#x7528;&#x6765;&#x5728;Scene&#x89C6;&#x56FE;&#x4E0A;&#x663E;&#x793A;&#x4E00;&#x4E2A;UI&#x5143;&#x7D20;&#x3002;&#x5176;&#x521B;&#x5EFA;&#x4E5F;&#x662F;&#x5728;Editor&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x7EE7;&#x627F;&#x81EA;Editor&#x7684;&#x811A;&#x672C;:</p>
+<p><img src="res/EditorTutorial/SceneGUI.gif" alt=""></p>
+<p>&#x5728;OnSceneGUI&#x4E2D;&#x53EF;&#x4EE5;&#x505A;&#x51FA;&#x548C;OnDrawGizmo&#x7C7B;&#x4F3C;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x6BD4;&#x5982;&#x7ED8;&#x5236;&#x51FA;Vector2&#x6570;&#x7EC4;&#x7684;&#x8DEF;&#x70B9;&#xFF1A;</p>
+<p><img src="res/EditorTutorial/SceneGUI.png" alt=""></p>
+<p>&#x5176;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-csharp"><span class="hljs-keyword">using</span> UnityEngine;
+<span class="hljs-keyword">using</span> UnityEditor;
+
+[CustomEditor(<span class="hljs-keyword">typeof</span>(SceneGUITest))]
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">SceneGUITestEditor</span> : <span class="hljs-title">Editor</span> 
+{
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnSceneGUI</span>(<span class="hljs-params"></span>) 
+    </span>{
+        Draw();
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Draw</span>(<span class="hljs-params"></span>)
+    </span>{
+        <span class="hljs-comment">//Draw a sphere</span>
+        SceneGUITest ctr = target <span class="hljs-keyword">as</span> SceneGUITest;
+        Color originColor = Handles.color;
+        Color circleColor = Color.red;
+        Color lineColor = Color.yellow;
+        Vector2 lastPos = Vector2.zero;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; ctr.poses.Length; i++)
+        {
+            <span class="hljs-keyword">var</span> pos = ctr.poses[i];
+            Vector2 targetPos = ctr.transform.position;
+            <span class="hljs-comment">//Draw Circle</span>
+            Handles.color = circleColor;
+            Handles.SphereHandleCap(  GUIUtility.GetControlID(FocusType.Passive ) , targetPos + pos, Quaternion.identity, <span class="hljs-number">0.2</span>f , EventType.Repaint );
+            <span class="hljs-comment">//Draw line</span>
+            <span class="hljs-keyword">if</span>(i &gt; <span class="hljs-number">0</span>) 
+            {
+                Handles.color = lineColor;
+                Handles.DrawLine( lastPos, pos );
+            }
+            lastPos = pos;
+        }
+        Handles.color = originColor;
+    }
+}
+</code></pre>
+<h2 id="ondrawgizmos&#x4E0E;onscenegui&#x7684;&#x533A;&#x522B;">OnDrawGizmos&#x4E0E;OnSceneGUI&#x7684;&#x533A;&#x522B;</h2>
+<p>&#x56E0;&#x4E3A;OnSceneGUI&#x662F;&#x5728;Editor&#x4E0A;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x800C;Editor&#x4E00;&#x822C;&#x90FD;&#x662F;&#x5BF9;&#x5E94;Monobehaviour&#xFF0C;&#x8FD9;&#x610F;&#x5473;&#x5B83;&#x662F;&#x53EA;&#x80FD;&#x662F;&#x70B9;&#x51FB;&#x5230;&#x5BF9;&#x5E94;&#x7269;&#x4F53;&#x624D;&#x4F1A;&#x751F;&#x6210;&#x7684;&#x3002;&#x800C;OnDrawGizmos&#x5219;&#x662F;&#x53EF;&#x4EE5;&#x5168;&#x5C40;&#x53EF;&#x89C1;&#x3002;</p>
+<p>&#x800C;&#x5982;&#x679C;&#x9700;&#x8981;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#xFF0C;&#x6BD4;&#x5982;&#x9700;&#x8981;&#x5728;Scene&#x754C;&#x9762;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x70B9;&#x51FB;&#x589E;&#x52A0;&#x6216;&#x8005;&#x4FEE;&#x6539;&#x8FD9;&#x4E9B;&#x8DEF;&#x70B9;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x5728;OnSceneGUI&#x4E0A;<strong>&#x5904;&#x7406;&#x4E8B;&#x4EF6;</strong>&#x6765;&#x8FDB;&#x884C;&#x4E00;&#x4E9B;&#x64CD;&#x4F5C;&#x3002;</p>
+<p><img src="res/EditorTutorial/SceneGUIAddPoint.gif" alt=""></p>
+<p>&#x5B8C;&#x6574;&#x7684;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF0C;&#x8FD9;&#x91CC;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x539F;&#x6765;&#x7684;poses&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x6539;&#x7528;&#x6210;&#x4E86;List<vector2>&#x7C7B;&#x578B;&#xFF1A;</vector2></p>
+<pre><code class="lang-csharp"><span class="hljs-keyword">using</span> UnityEngine;
+<span class="hljs-keyword">using</span> UnityEditor;
+
+[CustomEditor(<span class="hljs-keyword">typeof</span>(SceneGUITest))]
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">SceneGUITestEditor</span> : <span class="hljs-title">Editor</span> 
+{
+    <span class="hljs-keyword">protected</span> SceneGUITest ctr;
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnEnable</span>(<span class="hljs-params"></span>) 
+    </span>{
+        ctr = target <span class="hljs-keyword">as</span> SceneGUITest;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnSceneGUI</span>(<span class="hljs-params"></span>) 
+    </span>{
+        Event _event = Event.current;
+
+        <span class="hljs-keyword">if</span>( _event.type == EventType.Repaint )
+        {
+            Draw();
+        }
+        <span class="hljs-function"><span class="hljs-keyword">else</span> <span class="hljs-title">if</span> (<span class="hljs-params"> _event.type == EventType.Layout </span>)
+        </span>{
+            HandleUtility.AddDefaultControl( GUIUtility.GetControlID( FocusType.Passive ) );
+        }
+        <span class="hljs-keyword">else</span>
+        {
+            HandleInput( _event );
+            HandleUtility.Repaint();
+        }
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">HandleInput</span>(<span class="hljs-params"> Event guiEvent </span>)
+    </span>{
+        Ray mouseRay = HandleUtility.GUIPointToWorldRay( guiEvent.mousePosition );
+        Vector2 mousePosition = mouseRay.origin;
+        <span class="hljs-keyword">if</span>( guiEvent.type == EventType.MouseDown &amp;&amp; guiEvent.button == <span class="hljs-number">0</span> )
+        {
+            ctr.poses.Add( mousePosition );
+        }
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Draw</span>(<span class="hljs-params"></span>)
+    </span>{
+        <span class="hljs-comment">//Draw a sphere</span>
+        Color originColor = Handles.color;
+        Color circleColor = Color.red;
+        Color lineColor = Color.yellow;
+        Vector2 lastPos = Vector2.zero;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; ctr.poses.Count; i++)
+        {
+            <span class="hljs-keyword">var</span> pos = ctr.poses[i];
+            Vector2 targetPos = ctr.transform.position;
+            <span class="hljs-comment">//Draw Circle</span>
+            Handles.color = circleColor;
+            Vector2 finalPos = targetPos + <span class="hljs-keyword">new</span> Vector2( pos.x, pos.y);
+
+            Handles.SphereHandleCap(  GUIUtility.GetControlID(FocusType.Passive ) , finalPos , Quaternion.identity, <span class="hljs-number">0.2</span>f , EventType.Repaint );
+            <span class="hljs-comment">//Draw line</span>
+            <span class="hljs-keyword">if</span>(i &gt; <span class="hljs-number">0</span>) 
+            {
+                Handles.color = lineColor;
+                Handles.DrawLine( lastPos, pos );
+            }
+            lastPos = pos;
+        }
+        Handles.color = originColor;
+    }
+}
+</code></pre>
+<h1 id="menuitem&#x4E0E;editorwindow">MenuItem&#x4E0E;EditorWindow</h1>
+<p>MenuItem&#x53EF;&#x4EE5;&#x8BF4;&#x662F;&#x7528;&#x5F97;&#x6700;&#x591A;&#x7684;&#x4E86;&#xFF0C;&#x5B83;&#x7684;&#x4F5C;&#x7528;&#x662F;&#x7F16;&#x8F91;&#x5668;&#x4E0A;&#x83DC;&#x5355;&#x9879;&#xFF0C;&#x4E00;&#x822C;&#x7528;&#x4E8E;&#x4E00;&#x4E9B;&#x5FEB;&#x6377;&#x64CD;&#x4F5C;&#xFF0C;&#x6BD4;&#x5982;&#x4EA4;&#x6362;&#x4E24;&#x4E2A;&#x7269;&#x4F53;&#x4F4D;&#x7F6E;&#xFF1A;</p>
+<p><img src="res/EditorTutorial/MenuItemSwap.gif" alt=""></p>
+<p>&#x7531;&#x4E8E;&#x662F;&#x6D89;&#x53CA;&#x7F16;&#x8F91;&#x5668;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x6240;&#x4EE5;&#x4F9D;&#x7136;&#x53EF;&#x4EE5;&#x653E;&#x5728;Editor&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x9762;&#xFF0C;&#x5177;&#x4F53;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-csharp"><span class="hljs-keyword">using</span> UnityEditor;
+<span class="hljs-keyword">using</span> UnityEngine;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">MenuCommand</span>
+{
+    [MenuItem(<span class="hljs-string">&quot;MenuCommand/SwapGameObject&quot;</span>)]
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SwapGameObject</span>(<span class="hljs-params"></span>)
+    </span>{
+        <span class="hljs-comment">//&#x53EA;&#x6709;&#x4E24;&#x4E2A;&#x7269;&#x4F53;&#x624D;&#x80FD;&#x4EA4;&#x6362;</span>
+        <span class="hljs-keyword">if</span>( Selection.gameObjects.Length == <span class="hljs-number">2</span> )
+        {
+            Vector3 tmpPos = Selection.gameObjects[<span class="hljs-number">0</span>].transform.position;
+            Selection.gameObjects[<span class="hljs-number">0</span>].transform.position = Selection.gameObjects[<span class="hljs-number">1</span>].transform.position;
+            Selection.gameObjects[<span class="hljs-number">1</span>].transform.position = tmpPos;
+            <span class="hljs-comment">//&#x5904;&#x7406;&#x4E24;&#x4E2A;&#x4EE5;&#x4E0A;&#x7684;&#x573A;&#x666F;&#x7269;&#x4F53;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;MarkSceneDirty</span>
+            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty( UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene() );
+        }
+    }
+}
+</code></pre>
+<h2 id="editorwindow">EditorWindow</h2>
+<p>EditorWindow&#x5728;Unity&#x5F15;&#x64CE;&#x4E2D;&#x7684;&#x5E94;&#x7528;&#x4E5F;&#x7B97;&#x662F;&#x6BD4;&#x8F83;&#x591A;&#xFF0C;&#x6BD4;&#x5982;Animation&#x3001;TileMap&#x548C;Animitor&#x7A97;&#x53E3;&#x5E94;&#x8BE5;&#x5C31;&#x662F;&#x7528;&#x5230;&#x4E86;EditorWindow&#x3002;&#x521B;&#x5EFA;&#x65B9;&#x6CD5;&#x4ECD;&#x7136;&#x662F;&#x5728;Editor&#x6587;&#x4EF6;&#x5939;&#x4E2D;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7EE7;&#x627F;&#x81EA;EditorWindow&#x7684;&#x811A;&#x672C;&#x3002;EditorWindow&#x6709;&#x4E00;&#x4E2A;GetWindow&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x8C03;&#x7528;&#x4E4B;&#x540E;&#x5982;&#x679C;&#x5F53;&#x524D;&#x6CA1;&#x6709;&#x8FD9;&#x4E2A;&#x7A97;&#x53E3;&#x4F1A;&#x8FD4;&#x56DE;&#x65B0;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x5C31;&#x8FD4;&#x56DE;&#x5F53;&#x524D;&#x7A97;&#x53E3;&#xFF0C;&#x4E4B;&#x540E;&#x8C03;&#x7528;Show&#x5373;&#x53EF;&#x5C55;&#x793A;&#x8FD9;&#x4E2A;&#x7A97;&#x53E3;&#x3002;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;MenuItem&#x6765;&#x663E;&#x793A;&#x8FD9;&#x4E2A;EditorWindow&#xFF0C;&#x91CD;&#x5199;OnGUI&#x65B9;&#x6CD5;&#x5373;&#x53EF;&#x4EE5;&#x5199;Editor&#x7684;UI&#xFF1A;</p>
+<pre><code class="lang-csharp"><span class="hljs-keyword">using</span> UnityEngine;
+<span class="hljs-keyword">using</span> UnityEditor;
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">EditorTutorial</span>
+{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">EditorWindowTest</span> : <span class="hljs-title">EditorWindow</span> 
+    {
+
+        [MenuItem(<span class="hljs-string">&quot;CustomEditorTutorial/WindowTest&quot;</span>)]
+        <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ShowWindow</span>(<span class="hljs-params"></span>) 
+        </span>{
+            <span class="hljs-keyword">var</span> window = GetWindow();
+            window.titleContent = <span class="hljs-keyword">new</span> GUIContent(<span class="hljs-string">&quot;WindowTest&quot;</span>);
+            window.Show();
+        }
+
+        <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnGUI</span>(<span class="hljs-params"></span>) 
+        </span>{
+            <span class="hljs-keyword">if</span>(GUILayout.Button(<span class="hljs-string">&quot;Click Me&quot;</span>))
+            {
+                <span class="hljs-comment">//Logic</span>
+            }
+        }
+    }
+}
+</code></pre>
+<p>&#x4E4B;&#x540E;&#x70B9;&#x51FB;&#x7F16;&#x8F91;&#x5668;&#x7684;Menu&#x5C31;&#x4F1A;&#x6709;&#x8FD9;&#x4E2A;EditorWindow&#x51FA;&#x6765;:</p>
+<p><img src="res/EditorTutorial/EditorWindow.gif" alt=""></p>
+<p>EditorWindow&#x7684;UI&#x7684;&#x5199;&#x6CD5;&#x8DDF;OnInspectorGUI&#x7684;&#x5199;&#x6CD5;&#x5DEE;&#x4E0D;&#x591A;&#xFF0C;&#x57FA;&#x672C;&#x662F;<strong>GUILayout</strong>&#x548C;<strong>EditorGUILayout</strong>&#x8FD9;&#x4E24;&#x4E2A;&#x7C7B;&#x3002;</p>
+<h3 id="editorwindow&#x4E0E;oninspectorgui&#x7684;&#x5DEE;&#x522B;">EditorWindow&#x4E0E;OnInspectorGUI&#x7684;&#x5DEE;&#x522B;</h3>
+<p>&#x6700;&#x4E3B;&#x8981;&#x7684;&#x5DEE;&#x522B;&#x662F;EditorWindow&#x53EF;&#x4EE5;&#x505C;&#x9760;&#x7684;&#x5728;&#x8FB9;&#x680F;&#x4E0A;&#xFF0C;&#x4E0D;&#x4F1A;&#x56E0;&#x4E3A;&#x4F60;&#x70B9;&#x51FB;&#x4E00;&#x4E2A;&#x7269;&#x4F53;&#x5C31;&#x91CD;&#x65B0;&#x751F;&#x6210;&#x3002;&#x800C;OnInspectorGUI&#x7684;Editor&#x7C7B;&#x5728;&#x4F60;&#x6BCF;&#x6B21;&#x5207;&#x6362;&#x70B9;&#x51FB;&#x65F6;&#x5019;&#x90FD;&#x4F1A;&#x8C03;&#x7528;OnEnable&#x65B9;&#x6CD5;&#x3002;</p>
+<h3 id="editorwindow&#x5982;&#x4F55;&#x7ED8;&#x5236;scene&#x754C;&#x9762;ui">EditorWindow&#x5982;&#x4F55;&#x7ED8;&#x5236;Scene&#x754C;&#x9762;UI</h3>
+<p>&#x5728;EditorWindow&#x4E2D;&#x5982;&#x679C;&#x9700;&#x8981;&#x5BF9;Scene&#x7ED8;&#x5236;&#x4E00;&#x4E9B;UI&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x4F7F;&#x7528;Editor&#x90A3;&#x79CD;OnSceneGUI&#x662F;&#x65E0;&#x6548;&#x7684;&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x5219;&#x9700;&#x8981;&#x5728;Focus&#x6216;&#x8005;OnEnable&#x65F6;&#x5019;&#x52A0;&#x5165;SceneView&#x7684;&#x4E8B;&#x4EF6;&#x56DE;&#x8C03;&#x4E2D;,&#x5E76;&#x4E14;&#x5728;OnDestroy&#x65F6;&#x5019;&#x53BB;&#x9664;&#x8BE5;&#x56DE;&#x8C03;&#xFF1A;</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnFocus</span>(<span class="hljs-params"></span>) 
+</span>{
+    <span class="hljs-comment">//&#x5728;2019&#x7248;&#x672C;&#x662F;&#x8FD9;&#x4E2A;&#x56DE;&#x8C03;</span>
+    SceneView.duringSceneGui -= OnSceneGUI;
+    SceneView.duringSceneGui += OnSceneGUI;
+
+    <span class="hljs-comment">//&#x4EE5;&#x524D;&#x7248;&#x672C;&#x56DE;&#x8C03;</span>
+    <span class="hljs-comment">// SceneView.onSceneGUIDelegate -= OnSceneGUI</span>
+    <span class="hljs-comment">// SceneView.onSceneGUIDelegate += OnSceneGUI</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnDestroy</span>(<span class="hljs-params"></span>) 
+</span>{
+    SceneView.duringSceneGui -= OnSceneGUI;
+}
+<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnSceneGUI</span>(<span class="hljs-params"> SceneView view </span>) 
+</span>{
+}
+</code></pre>
+<h1 id="scriptwizard">ScriptWizard</h1>
+<p>Unity&#x5F15;&#x64CE;&#x7684;&#x4E2D;&#x7684;BuildSetting&#x7A97;&#x53E3;(Ctr+Shift+B&#x5F39;&#x51FA;&#x7684;&#x7A97;&#x53E3;)&#x5C31;&#x662F;&#x4F7F;&#x7528;&#x4E86;SciptWizard&#xFF0C;&#x4E00;&#x822C;&#x6765;&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x4E2D;&#x4F5C;&#x4E3A;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#x7684;&#x751F;&#x6210;&#x5668;&#x548C;&#x521D;&#x59CB;&#x5316;&#x7C7B;&#x578B;&#x7684;&#x529F;&#x80FD;&#x6765;&#x4F7F;&#x7528;&#xFF0C;&#x6BD4;&#x5982;&#x7F8E;&#x672F;&#x7ED9;&#x6211;&#x4E00;&#x4E2A;&#x5E8F;&#x5217;&#x5E27;&#xFF0C;&#x6211;&#x9700;&#x8981;&#x76F4;&#x63A5;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x5E26;SpriteRenderer&#x7684;GameObject&#xFF0C;&#x800C;&#x4E14;&#x5B83;&#x8FD8;&#x6709;&#x81EA;&#x5E26;&#x5E8F;&#x5217;&#x5E27;&#x7684;Animator&#x3002;</p>
+<p>&#x9ED8;&#x8BA4;&#x7684;&#x663E;&#x793A;&#x6837;&#x5F0F;:
+<img src="res/EditorTutorial/ScriptWizard.png" alt=""></p>
+<p>&#x5176;&#x521B;&#x5EFA;&#x8FC7;&#x7A0B;&#x8FD8;&#x662F;&#x5728;Editor&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7EE7;&#x627F;&#x81EA;ScriptWizard&#x7684;&#x811A;&#x672C;&#xFF0C;&#x8C03;&#x7528;ScriptWizard.DisplayWizard&#x65B9;&#x6CD5;&#x5373;&#x53EF;&#x751F;&#x6210;&#x5E76;&#x663E;&#x793A;&#x8FD9;&#x4E2A;&#x7A97;&#x53E3;&#xFF0C;&#x70B9;&#x51FB;&#x53F3;&#x4E0B;&#x89D2;&#x7684;Create&#x4F1A;&#x8C03;&#x7528;OnWizardCreate&#x65B9;&#x6CD5;&#xFF1A;</p>
+<pre><code class="lang-csharp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">TestSctiptWizard</span>: <span class="hljs-title">ScriptableWizard</span> 
+{
+
+    [MenuItem(<span class="hljs-string">&quot;CustomEditorTutorial/TestSctiptWizard&quot;</span>)]
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">MenuEntryCall</span>(<span class="hljs-params"></span>) 
+    </span>{
+        DisplayWizard(<span class="hljs-string">&quot;Title&quot;</span>);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnWizardCreate</span>(<span class="hljs-params"></span>) 
+    </span>{
+
+    }
+}
+</code></pre>
+<h2 id="scriptwizard&#x4E0E;editorwindow&#x7684;&#x533A;&#x522B;">ScriptWizard&#x4E0E;EditorWindow&#x7684;&#x533A;&#x522B;</h2>
+<p>&#x5728;ScriptWizard&#x4E2D;&#x5982;&#x679C;&#x4F60;&#x58F0;&#x660E;&#x4E00;&#x4E2A;Public&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x4F1A;&#x53D1;&#x73B0;&#x5728;&#x7A97;&#x53E3;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x663E;&#x793A;&#xFF0C;&#x4F46;&#x662F;&#x5728;EditorWindow&#x5219;&#x662F;&#x4E0D;&#x80FD;&#x663E;&#x793A;&#x3002;</p>
+<h1 id="scriptobject">ScriptObject</h1>
+<p>&#x5BF9;&#x4E8E;&#x6E38;&#x620F;&#x4E2D;&#x4E00;&#x4E9B;&#x6570;&#x636E;&#x548C;&#x914D;&#x7F6E;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x7528;ScriptObject&#x6765;&#x4FDD;&#x5B58;&#xFF0C;&#x867D;&#x7136;XML&#x4E4B;&#x6D41;&#x4E5F;&#x53EF;&#x4EE5;&#xFF0C;&#x4F46;&#x662F;ScriptObject&#x76F8;&#x5BF9;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#x800C;&#x4E14;&#x53EF;&#x4EE5;&#x4FDD;&#x5B58;UnityObject&#x6BD4;&#x5982;Sprite&#x3001;Material&#x8FD9;&#x4E9B;&#x3002;&#x751A;&#x81F3;&#x4F60;&#x4F1A;&#x53D1;&#x73B0;&#x4E0A;&#x9762;&#x8BF4;&#x7684;&#x51E0;&#x4E2A;&#x7C7B;&#x90FD;&#x662F;&#x7EE7;&#x627F;&#x81EA;SctriptObject&#x3002; &#x56E0;&#x4E3A;&#x5176;&#x4E0D;&#x518D;&#x662F;&#x53EA;&#x9002;&#x7528;&#x7F16;&#x8F91;&#x5668;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x5FC5;&#x653E;&#x5728;Editor&#x6587;&#x4EF6;&#x5939;&#x4E0B; &#x3002;</p>
+<p>&#x4E0E;SctiptWizard&#x7C7B;&#x4F3C;&#xFF0C;&#x4E5F;&#x662F;&#x58F0;&#x660E;Public&#x53EF;&#x4EE5;&#x5728;&#x7A97;&#x53E3;&#x4E0A;&#x76F4;&#x63A5;&#x770B;&#x5230;&#xFF0C;&#x81EA;&#x5B9A;&#x4E49;&#x7ED8;&#x5236;GUI&#x4E5F;&#x662F;&#x5728;OnGUI&#x65B9;&#x6CD5;&#x91CC;&#x9762;&#xFF1A;</p>
+<pre><code class="lang-csharp">[CreateAssetMenu(fileName = <span class="hljs-string">&quot;TestScriptObject&quot;</span>, menuName = <span class="hljs-string">&quot;CustomEditorTutorial/TestScriptObject&quot;</span>, order = <span class="hljs-number">0</span>)]
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">TestScriptObject</span> : <span class="hljs-title">ScriptableObject</span> 
+{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> Name;
+}
+</code></pre>
+<p>&#x4F7F;&#x7528;CreateAssetMenu&#x7684;Attribute&#x7684;&#x4F5C;&#x7528;&#x662F;&#x4F7F;&#x5F97;&#x5176;&#x53EF;&#x4EE5;&#x5728;Project&#x7A97;&#x53E3;&#x4E2D;&#x53F3;&#x952E;&#x751F;&#x6210;&#xFF1A;</p>
+<p><img src="res/EditorTutorial/ScriptObject.gif" alt=""></p>
+<h2 id="scriptobject&#x4E0E;systemserializable&#x7684;&#x5DEE;&#x522B;">ScriptObject&#x4E0E;System.Serializable&#x7684;&#x5DEE;&#x522B;</h2>
+<p>&#x521D;&#x5B66;&#x8005;&#x53EF;&#x80FD;&#x4F1A;&#x5BF9;&#x8FD9;&#x4E24;&#x4E2A;&#x6BD4;&#x8F83;&#x56F0;&#x6270;&#xFF08;&#x6211;&#x4E00;&#x5F00;&#x59CB;&#x5C31;&#x6BD4;&#x8F83;&#x56F0;&#x6270;&#xFF09;&#xFF0C;&#x4E00;&#x5F00;&#x59CB;&#x6211;&#x628A;SctiptObject&#x62D6;&#x62FD;&#x5230;Monobehaviour&#x4E0A;&#x9762;&#x53D1;&#x73B0;&#x5176;&#x4E0D;&#x4F1A;&#x663E;&#x793A;&#x51FA;SctiptObject&#x7684;&#x5C5E;&#x6027;</p>
+<p><img src="res/EditorTutorial/ScriptObjectController.png" alt=""></p>
+<p>&#x7136;&#x540E;&#x6211;&#x5728;SctiptObject&#x4E0A;&#x9762;&#x52A0;&#x4E0A;[System.Serializable]&#xFF0C;&#x4E5F;&#x662F;&#x6CA1;&#x7528;&#xFF1A;</p>
+<pre><code class="lang-csharp">[CreateAssetMenu(fileName = <span class="hljs-string">&quot;TestScriptObject&quot;</span>, menuName = <span class="hljs-string">&quot;CustomEditorTutorial/TestScriptObject&quot;</span>, order = <span class="hljs-number">0</span>)]
+[System.Serializable]
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">TestScriptObject</span> : <span class="hljs-title">ScriptableObject</span> 
+{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> Name;
+}
+</code></pre>
+<p>&#x6240;&#x4EE5;&#x662F;&#x5728;ScriptObject&#x4E0A;&#x9762;&#x4F7F;&#x7528;[ System.Serializable ]&#x662F;&#x4E0D;&#x53EF;&#x53D6;&#x7684;&#xFF0C;[ System.Serializable]&#x9002;&#x5408;&#x4E8E;&#x666E;&#x666E;&#x901A;&#x901A;&#x7684;Class&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;</p>
+<pre><code class="lang-csharp">[System.Serializable]
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Data</span>
+{
+    <span class="hljs-keyword">string</span> Name;
+}
+</code></pre>
+<h2 id="scriptobject&#x4E0A;&#x9762;&#x8C03;&#x7528;&#x7F16;&#x8F91;&#x5668;&#x4FEE;&#x6539;&#x9700;&#x8981;&#x8C03;&#x7528;editorutilitysetdirty&#xFF0C;&#x4E0D;&#x53EF;&#x8C03;&#x7528;editorscenemanagermarkscenedirty">ScriptObject&#x4E0A;&#x9762;&#x8C03;&#x7528;&#x7F16;&#x8F91;&#x5668;&#x4FEE;&#x6539;&#x9700;&#x8981;&#x8C03;&#x7528;EditorUtility.SetDirty&#xFF0C;&#x4E0D;&#x53EF;&#x8C03;&#x7528;EditorSceneManager.MarkSceneDirty</h2>
+<p>&#x56E0;&#x4E3A;MarkSceneDirty&#x987E;&#x540D;&#x601D;&#x4E49;&#x662F;&#x6807;&#x8BB0;&#x573A;&#x666F;&#x4E3A;&#x5DF2;&#x4FEE;&#x6539;&#xFF0C;&#x4F46;&#x662F;&#x7F16;&#x8F91;ScriptObject&#x5E76;&#x4E0D;&#x5C5E;&#x4E8E;&#x573A;&#x666F;&#x5185;&#x6570;&#x636E;&#xFF0C;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x4FEE;&#x6539;&#x53EA;&#x53EF;&#x8C03;&#x7528;EditorUtility.SetDirty&#xFF0C;&#x4E0D;&#x7136;&#x4F1A;&#x9020;&#x6210;&#x6570;&#x636E;&#x6539;&#x52A8;&#x672A;&#x751F;&#x6548;&#x3002;</p>
+<h1 id="attributes">Attributes</h1>
+<p>Attributes&#x662F;C#&#x7684;&#x4E00;&#x4E2A;&#x529F;&#x80FD;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x8BA9;&#x58F0;&#x660E;&#x4FE1;&#x606F;&#x4E0E;&#x4EE3;&#x7801;&#x76F8;&#x5173;&#x8054;&#xFF0C;&#x5176;&#x4E0E;C#&#x7684;&#x53CD;&#x5C04;&#x8054;&#x7CFB;&#x5F88;&#x7D27;&#x5BC6;&#x3002;&#x5728;Unity&#x4E2D;&#x8BF8;&#x5982;[System.Serializable],[Header],[Range]&#x90FD;&#x662F;&#x5176;&#x7684;&#x5E94;&#x7528;&#x3002;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#x4ED6;&#x5B83;&#x529F;&#x80FD;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;Editor&#x6765;&#x5B9E;&#x73B0;&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x4EE5;&#x7ED8;&#x5236;&#x5BF9;&#x5E94;&#x7684;&#x5C5E;&#x6027;&#x6765;&#x8BF4;&#x4F1A;&#x66F4;&#x597D;&#x590D;&#x7528;&#x3002;</p>
+<p>&#x62D3;&#x5C55;Attribute&#x76F8;&#x5BF9;&#x6765;&#x8BF4;&#x7A0D;&#x5FAE;&#x590D;&#x6742;&#x4E00;&#x70B9;&#xFF0C;&#x5B83;&#x6D89;&#x53CA;&#x4E24;&#x4E2A;&#x7C7B;&#xFF1A;<strong>PropertyAttribute</strong>&#x548C;<strong>PropertyDrawer</strong>&#xFF0C;&#x524D;&#x8005;&#x662F;&#x5B9A;&#x4E49;&#x5B83;&#x884C;&#x4E3A;&#xFF0C;&#x540E;&#x8005;&#x4E3B;&#x8981;&#x662F;&#x5176;&#x5728;&#x7F16;&#x8F91;&#x5668;&#x7684;&#x663E;&#x793A;&#x6548;&#x679C;&#x3002;&#x4E00;&#x822C;&#x6765;&#x8BF4;Attribute&#x662F;&#x653E;&#x5728;Runtime&#xFF0C;&#x800C;Drawer&#x5219;&#x662F;&#x653E;&#x5728;Editor&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x3002;&#x8FD9;&#x91CC;&#x7684;&#x4F8B;&#x5B50;&#x662F;&#x52A0;&#x5165;[Preview]&#x7684;Attribute&#xFF0C;&#x4F7F;&#x5F97;&#x6211;&#x4EEC;&#x62D6;&#x62FD;Sprite&#x6216;&#x8005;GameObject&#x53EF;&#x4EE5;&#x663E;&#x793A;&#x9884;&#x89C8;&#x56FE;&#xFF1A;</p>
+<p><img src="res/EditorTutorial/Attribute.png" alt=""></p>
+<p>&#x4F7F;&#x7528;&#x65F6;&#x5019;&#x7684;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-csharp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">AttributeSceneController</span> : <span class="hljs-title">MonoBehaviour</span> 
+{
+    [Preview]
+    <span class="hljs-keyword">public</span> Sprite sprite;
+}
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x73B0;&#x5728;Runtime&#x5C42;&#x7684;&#x6587;&#x4EF6;&#x5939;&#x52A0;&#x5165;&#x7EE7;&#x627F;&#x81EA;PropertyAttribute&#x7684;PreviewAttribute&#x811A;&#x672C;&#xFF1A;</p>
+<pre><code class="lang-csharp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Preview</span> : <span class="hljs-title">PropertyAttribute</span>
+{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Preview</span>(<span class="hljs-params"></span>)
+    </span>{
+
+    }
+}
+</code></pre>
+<p>&#x7136;&#x540E;&#x5728;Editor&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x52A0;&#x5165;&#x7EE7;&#x627F;&#x81EA;PropertyDrawer&#x7684;PreviewDrawer&#x811A;&#x672C;&#xFF1A;</p>
+<pre><code class="lang-csharp"><span class="hljs-keyword">using</span> UnityEngine;
+<span class="hljs-keyword">using</span> UnityEditor;
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">EditorTutorial</span>
+{
+    [CustomPropertyDrawer(<span class="hljs-keyword">typeof</span>(Preview))]
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">PreviewDrawer</span>: <span class="hljs-title">PropertyDrawer</span> 
+    {
+        <span class="hljs-comment">//&#x8C03;&#x6574;&#x6574;&#x4F53;&#x9AD8;&#x5EA6;</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">float</span> <span class="hljs-title">GetPropertyHeight</span>(<span class="hljs-params"> SerializedProperty property, GUIContent label </span>)
+        </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">base</span>.GetPropertyHeight( property, label ) + <span class="hljs-number">64</span>f;
+        }
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnGUI</span>(<span class="hljs-params">Rect position, SerializedProperty property, GUIContent label</span>) 
+        </span>{
+            EditorGUI.BeginProperty(position, label, property);
+            EditorGUI.PropertyField(position, property, label);
+
+            <span class="hljs-comment">// Preview</span>
+            Texture2D previewTexture = GetAssetPreview(property);
+            <span class="hljs-keyword">if</span>( previewTexture != <span class="hljs-keyword">null</span> )
+            {
+                Rect previewRect = <span class="hljs-keyword">new</span> Rect()
+                {
+                    x = position.x + GetIndentLength( position ),
+                    y = position.y + EditorGUIUtility.singleLineHeight,
+                    width = position.width,
+                    height = <span class="hljs-number">64</span>
+                };
+                GUI.Label( previewRect, previewTexture );
+            }
+            EditorGUI.EndProperty();
+        }
+
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">float</span> <span class="hljs-title">GetIndentLength</span>(<span class="hljs-params">Rect sourceRect</span>)
+        </span>{
+            Rect indentRect = EditorGUI.IndentedRect(sourceRect);
+            <span class="hljs-keyword">float</span> indentLength = indentRect.x - sourceRect.x;
+
+            <span class="hljs-keyword">return</span> indentLength;
+        }
+
+        <span class="hljs-function">Texture2D <span class="hljs-title">GetAssetPreview</span>(<span class="hljs-params"> SerializedProperty property </span>)
+        </span>{
+            <span class="hljs-keyword">if</span> (property.propertyType == SerializedPropertyType.ObjectReference)
+            {
+                <span class="hljs-keyword">if</span> (property.objectReferenceValue != <span class="hljs-keyword">null</span>)
+                {
+                Texture2D previewTexture = AssetPreview.GetAssetPreview(property.objectReferenceValue);
+                <span class="hljs-keyword">return</span> previewTexture;
+                }
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+            }
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+        }
+    }
+}
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x662F;&#x5BF9;&#x5C5E;&#x6027;&#x7684;&#x4E00;&#x4E9B;&#x7ED8;&#x5236;&#xFF0C;&#x5B9E;&#x9645;&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x4E2D;&#x6211;&#x4EEC;&#x5E38;&#x5E38;&#x9700;&#x8981;&#x4E00;&#x4E9B;&#x53EF;&#x4EA4;&#x4E92;&#x7684;UI&#xFF0C;&#x6BD4;&#x5982;&#x5728;&#x65B9;&#x6CD5;&#x4E0A;&#x9762;&#x52A0;&#x4E00;&#x4E2A;[Button]&#x7136;&#x540E;&#x5728;&#x7F16;&#x8F91;&#x5668;&#x66B4;&#x9732;&#x51FA;&#x4E00;&#x4E2A;&#x6309;&#x94AE;&#x51FA;&#x6765;&#xFF0C;&#x5177;&#x4F53;&#x7684;&#x4F8B;&#x5B50;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="https://github.com/dbrizov/NaughtyAttributes" target="_blank">NaughtyAttribute</a></p>
+<h1 id="assetpostprocessor">AssetPostprocessor</h1>
+<p>&#x5728;&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x4E2D;&#x5E38;&#x5E38;&#x4F1A;&#x9047;&#x5230;&#x8D44;&#x6E90;&#x5BFC;&#x5165;&#x95EE;&#x9898;&#xFF0C;&#x6BD4;&#x5982;&#x6211;&#x5236;&#x4F5C;&#x50CF;&#x7D20;&#x6E38;&#x620F;&#x56FE;&#x7247;&#x8981;&#x6C42;&#x662F;FilterMode&#x4E3A;Point,&#x56FE;&#x7247;&#x4E0D;&#x9700;&#x8981;&#x538B;&#x7F29;&#xFF0C;PixelsPerUnit&#x4E3A;16&#xFF0C;&#x5982;&#x679C;&#x6BCF;&#x6B21;&#x590D;&#x5236;&#x5230;&#x4E00;&#x4E2A;&#x56FE;&#x7247;&#x5230;&#x9879;&#x76EE;&#x518D;&#x4FEE;&#x6539;&#x4F1A;&#x5F88;&#x9EBB;&#x70E6;&#x3002;&#x8FD9;&#x91CC;&#x4E00;&#x4E2A;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x662F;&#x53EF;&#x4EE5;&#x7528;MenuItem&#x6765;&#x5904;&#x7406;&#xFF0C;&#x4F46;&#x8FD8;&#x9700;&#x8981;&#x591A;&#x70B9;&#x51E0;&#x4E0B;&#xFF0C;&#x800C;&#x4F7F;&#x7528;AssetPostprocessor&#x5219;&#x53EF;&#x4EE5;&#x81EA;&#x52A8;&#x5904;&#x7406;&#x5B8C;&#x6210;&#x3002;</p>
+<p>&#x5728;Editor&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x7EE7;&#x627F;&#x81EA;AssetPostprocessor&#x7684;TexturePipeLine&#xFF1A;</p>
+<pre><code class="lang-csharp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">TexturePipeLine</span> : <span class="hljs-title">AssetPostprocessor</span>
+{
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnPreprocessTexture</span>(<span class="hljs-params"></span>)
+    </span>{
+        TextureImporter importer = assetImporter <span class="hljs-keyword">as</span> TextureImporter;
+        <span class="hljs-keyword">if</span>( importer.filterMode == FilterMode.Point ) <span class="hljs-keyword">return</span>;
+
+        importer.spriteImportMode = SpriteImportMode.Single;
+
+        importer.spritePixelsPerUnit = <span class="hljs-number">16</span>;
+        importer.filterMode = FilterMode.Point;
+        importer.maxTextureSize = <span class="hljs-number">2048</span>;
+        importer.textureCompression = TextureImporterCompression.Uncompressed;
+
+        TextureImporterSettings settings = <span class="hljs-keyword">new</span> TextureImporterSettings();
+        importer.ReadTextureSettings( settings );
+        settings.ApplyTextureType( TextureImporterType.Sprite );
+        importer.SetTextureSettings( settings ) ;
+    }
+}
+</code></pre>
+<p>&#x4E4B;&#x540E;&#x518D;&#x5BFC;&#x5165;&#x4E00;&#x4E2A;&#x50CF;&#x7D20;&#x56FE;&#x7247;&#x53D1;&#x73B0;&#x5C31;&#x5DF2;&#x7ECF;&#x5168;&#x90E8;&#x8BBE;&#x7F6E;&#x597D;&#x4E86;&#xFF1A;</p>
+<p><img src="res/EditorTutorial/AssetProcess.gif" alt=""></p>
+<p>&#x53EF;&#x4EE5;&#x60F3;&#x8C61;&#x7684;&#x4E00;&#x4E9B;&#x4F7F;&#x7528;&#x573A;&#x666F;&#x662F;&#x53EF;&#x4EE5;&#x6839;&#x636E;XML&#x548C;SpriteSheet&#x6765;&#x5B9E;&#x73B0;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x52A8;&#x753B;&#x6216;&#x8005;&#x81EA;&#x52A8;&#x5207;&#x56FE;&#xFF0C;&#x89E3;&#x6790;PSD&#x6216;ASE&#x81EA;&#x52A8;&#x5BFC;&#x5165;PNG&#x3002;</p>
+<h1 id="&#x5176;&#x4ED6;&#x4E00;&#x4E9B;&#x503C;&#x5F97;&#x6CE8;&#x610F;&#x7684;&#x5730;&#x65B9;">&#x5176;&#x4ED6;&#x4E00;&#x4E9B;&#x503C;&#x5F97;&#x6CE8;&#x610F;&#x7684;&#x5730;&#x65B9;</h1>
+<h2 id="undo">Undo</h2>
+<p>&#x5728;&#x4E4B;&#x524D;&#x8BF4;&#x8FC7;&#x5728;Editor&#x91CC;&#x9762;&#x76F4;&#x63A5;&#x6539;&#x52A8;&#x539F;&#x6765;&#x7684;Monobehaviour&#x811A;&#x672C;&#x662F;&#x53D8;&#x91CF;&#x662F;&#x65E0;&#x6CD5;&#x64A4;&#x9500;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x4F7F;&#x7528; serializedObject&#x6765;&#x4FEE;&#x6539;&#x5219;&#x53EF;&#x4EE5;&#x64A4;&#x9500;&#x3002;&#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x5199;&#x4E00;&#x4E2A;Undo&#x6765;&#x8BB0;&#x5F55;&#x4F7F;&#x5176;&#x53EF;&#x4EE5;&#x64A4;&#x9500;&#xFF0C;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-csharp"><span class="hljs-keyword">if</span>(GUILayout.Button(<span class="hljs-string">&quot;Click Me&quot;</span>))
+{
+    InspectorTest ctr = target <span class="hljs-keyword">as</span> InspectorTest;
+    <span class="hljs-comment">//&#x8BB0;&#x5F55;&#x4F7F;&#x5176;&#x53EF;&#x4EE5;&#x64A4;&#x9500;</span>
+    Undo.RecordObject( ctr ,<span class="hljs-string">&quot;Change Name&quot;</span> );
+    ctr.Name = <span class="hljs-string">&quot;Codinggamer&quot;</span>;
+    EditorUtility.SetDirty( ctr );
+}
+</code></pre>
+<h2 id="selectionbase">SelectionBase</h2>
+<p>&#x5F53;&#x4F60;&#x7684;&#x7C7B;&#x4E2D;&#x4F7F;&#x7528;[SelectionBase]&#x7684;Attribute&#x65F6;&#x5019;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x70B9;&#x51FB;&#x5176;&#x5B50;&#x8282;&#x70B9;&#x4E0B;&#x7684;&#x7269;&#x4F53;&#xFF0C;&#x5176;&#x4ECD;&#x7136;&#x53EA;&#x4F1A;&#x805A;&#x7126;&#x8FD9;&#x4E2A;&#x7236;&#x8282;&#x70B9;&#x3002;</p>
+<p><img src="res/EditorTutorial/SelectionBase.gif" alt=""></p>
+<h2 id="&#x4E0D;&#x5728;editor&#x6587;&#x4EF6;&#x5939;&#x91CC;&#x9762;&#x5199;&#x7F16;&#x8F91;&#x5668;&#x4EE3;&#x7801;">&#x4E0D;&#x5728;Editor&#x6587;&#x4EF6;&#x5939;&#x91CC;&#x9762;&#x5199;&#x7F16;&#x8F91;&#x5668;&#x4EE3;&#x7801;</h2>
+<p>&#x6709;&#x7684;&#x65F6;&#x5019;&#x6211;&#x4EEC;Monobehaviour&#x672C;&#x8EAB;&#x5F88;&#x77ED;&#x5C0F;&#xFF0C;&#x62D3;&#x5C55;InspectorGUI&#x7684;&#x4EE3;&#x7801;&#x4E5F;&#x5F88;&#x77ED;&#x5C0F;&#xFF0C;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x5728;Editor&#x4E0A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x811A;&#x672C;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;#UNITY_EDITOR &#x7684;&#x5B8F;&#x6765;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x62D3;&#x5C55;&#x7F16;&#x8F91;&#x5668;&#xFF0C;&#x6BD4;&#x5982;&#x4E4B;&#x524D;&#x7684;&#x62D3;&#x5C55;InspectorGUI&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x5199;&#xFF1A;</p>
+<pre><code class="lang-csharp"><span class="hljs-keyword">using</span> System.Collections;
+<span class="hljs-keyword">using</span> System.Collections.Generic;
+<span class="hljs-keyword">using</span> UnityEngine;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">if</span> UNITY_EDITOR</span>
+<span class="hljs-keyword">using</span> UnityEditor;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">EditorTutorial</span>
+{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">InspectorTest</span> : <span class="hljs-title">MonoBehaviour</span>
+    {
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> Name = <span class="hljs-string">&quot;hello&quot;</span>;
+    }
+
+    <span class="hljs-meta">#<span class="hljs-meta-keyword">if</span> UNITY_EDITOR</span>
+    [CustomEditor(<span class="hljs-keyword">typeof</span>(InspectorTest))]
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">InspectorTestEditor</span> : <span class="hljs-title">Editor</span> 
+    {
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnInspectorGUI</span>(<span class="hljs-params"></span>) 
+        </span>{
+            <span class="hljs-keyword">base</span>.OnInspectorGUI();
+            <span class="hljs-keyword">if</span>(GUILayout.Button(<span class="hljs-string">&quot;Click Me&quot;</span>))
+            {
+
+                InspectorTest ctr = target <span class="hljs-keyword">as</span> InspectorTest;
+                <span class="hljs-comment">//&#x8BB0;&#x5F55;&#x4F7F;&#x5176;&#x53EF;&#x4EE5;&#x64A4;&#x9500;</span>
+                Undo.RecordObject( ctr ,<span class="hljs-string">&quot;Change Name&quot;</span> );
+                ctr.Name = <span class="hljs-string">&quot;Codinggamer&quot;</span>;
+                EditorUtility.SetDirty( ctr );
+            }
+        }
+    }
+    <span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+}
+</code></pre>
+<h2 id="editorwindow&#x548C;editor&#x4FDD;&#x5B58;&#x6570;&#x636E;">EditorWindow&#x548C;Editor&#x4FDD;&#x5B58;&#x6570;&#x636E;</h2>
+<p>&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x4F7F;&#x7528;EditorPrefs&#x6765;&#x4FDD;&#x5B58;&#x548C;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x5728;&#x9700;&#x8981;&#x4FDD;&#x5B58;&#x7684;&#x6570;&#x636E;&#x4E0A;&#x9762;&#x52A0;&#x4E0A;[System.SerializeField]&#x7684;Attribute&#xFF0C;&#x7136;&#x540E;&#x5728;OnEnable&#x548C;OnDisable&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x4FDD;&#x5B58;&#x6216;&#x8005;&#x5EA6;&#x5E8F;&#x5217;&#x5316;json&#xFF1A;</p>
+<pre><code class="lang-csharp">[SerializeField]
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> Name = <span class="hljs-string">&quot;Hi&quot;</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnEnable</span>(<span class="hljs-params"></span>) 
+</span>{
+    <span class="hljs-keyword">var</span> data = EditorPrefs.GetString( <span class="hljs-string">&quot;WINDOW_KEY&quot;</span>, JsonUtility.ToJson( <span class="hljs-keyword">this</span>, <span class="hljs-keyword">false</span> ) );
+    JsonUtility.FromJsonOverwrite( data, <span class="hljs-keyword">this</span> );
+}
+
+<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnDisable</span>(<span class="hljs-params"></span>) 
+</span>{
+    <span class="hljs-keyword">var</span> data = JsonUtility.ToJson( <span class="hljs-keyword">this</span>, <span class="hljs-keyword">false</span>  );
+    EditorPrefs.SetString(<span class="hljs-string">&quot;WINDOW_KEY&quot;</span>, data);
+}
+</code></pre>
+<p>&#x611F;&#x89C9;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x5E8F;&#x5217;&#x5316;&#x811A;&#x672C;&#x4FDD;&#x5B58;&#x5230;&#x672C;&#x5730;&#x3002;</p>
+<h2 id="&#x5728;&#x4EE3;&#x7801;&#x4E2D;&#x68C0;&#x7D22;&#x5BF9;&#x5E94;monobehaviour&#x7684;editor&#x7C7B;">&#x5728;&#x4EE3;&#x7801;&#x4E2D;&#x68C0;&#x7D22;&#x5BF9;&#x5E94;MonoBehaviour&#x7684;Editor&#x7C7B;</h2>
+<p>&#x5728;EditorWindow&#x7684;&#x4F7F;&#x7528;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x6709;&#x7684;&#x65F6;&#x5019;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x8C03;&#x7528;&#x5230;&#x5BF9;&#x5E94;&#x62D3;&#x5C55;MonoBehaviour&#x7684;Editor&#x4EE3;&#x7801;&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;Editor.CreateEditor&#x65B9;&#x6CD5;&#x6765;&#x521B;&#x5EFA;&#x8FD9;&#x4E2A;Editor&#x3002;</p>
+<h2 id="&#x5728;&#x7F16;&#x8F91;&#x5668;&#x4EE3;&#x7801;&#x4E2D;&#x751F;&#x6210;-serializedobject">&#x5728;&#x7F16;&#x8F91;&#x5668;&#x4EE3;&#x7801;&#x4E2D;&#x751F;&#x6210; SerializedObject</h2>
+<p>&#x4E0A;&#x9762;&#x8BF4;&#x8FC7;&#xFF0C;&#x5728;&#x7F16;&#x8F91;&#x5668;&#x4EE3;&#x7801;&#x4E2D;&#x4E00;&#x822C;&#x6BD4;&#x8F83;&#x591A;&#x4F7F;&#x7528;SerializedObject&#xFF0C;&#x50CF;Editor&#x7C7B;&#x4E2D;&#x5C31;&#x5185;&#x7F6E;&#x4E86;serializedObject&#x3002;&#x5B9E;&#x9645;&#x4E0A;&#x6240;&#x6709;&#x7EE7;&#x627F;&#x81EA;SctiptObject&#x6216;&#x8005;Monobehaviour&#x7684;&#x811A;&#x672C;&#x90FD;&#x53EF;&#x4EE5;&#x751F;&#x6210;SerializedObject&#x3002;&#x5176;&#x751F;&#x6210;&#x65B9;&#x5F0F;&#x5F88;&#x7B80;&#x5355;&#x53EA;&#x9700;&#x8981;new&#x7684;&#x65F6;&#x5019;&#x4F20;&#x5165;&#x4F60;&#x9700;&#x8981;&#x5E8F;&#x5217;&#x5316;&#x7684;&#x7EC4;&#x4EF6;&#x5373;&#x53EF;&#xFF1A;</p>
+<pre><code class="lang-csharp">SerializedObject serialized = <span class="hljs-keyword">new</span> SerializedObject(<span class="hljs-keyword">this</span>);
+</code></pre>
+<h1 id="&#x540E;&#x8BB0;">&#x540E;&#x8BB0;</h1>
+<p>&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x4E2D;&#x5E76;&#x6CA1;&#x6709;&#x6D89;&#x53CA;&#x6BD4;&#x8F83;&#x591A;&#x7684;API&#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x66F4;&#x591A;&#x7684;&#x662F;&#x60F3;&#x5C55;&#x73B0;&#x51FA;<strong>&#x53EF;&#x4EE5;&#x7528;&#x62D3;&#x5C55;&#x7F16;&#x8F91;&#x5668;&#x6765;&#x505A;&#x4EC0;&#x4E48;&#x4EE5;&#x53CA;&#x5F53;&#x4F60;&#x60F3;&#x505A;&#x4E00;&#x4E9B;&#x62D3;&#x5C55;&#x65F6;&#x5019;&#x9700;&#x8981;&#x4ECE;&#x54EA;&#x91CC;&#x5165;&#x624B;</strong>&#x3002;&#x6BD4;&#x5982;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x7ED9;&#x7F8E;&#x672F;&#x4EBA;&#x5458;&#x505A;&#x4E00;&#x4E2A;&#x5FEB;&#x6377;&#x751F;&#x6210;&#x89D2;&#x8272;&#x7684;&#x5DE5;&#x5177;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;ScriptWizard&#x3002;&#x5982;&#x679C;&#x4F60;&#x9700;&#x8981;&#x8BA9;&#x7F8E;&#x672F;&#x4EBA;&#x5458;&#x548C;&#x8BBE;&#x8BA1;&#x5E08;&#x66F4;&#x52A0;&#x65B9;&#x4FBF;&#x5730;&#x8C03;&#x6574;&#x4EBA;&#x7269;&#x5C5E;&#x6027;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x4F7F;&#x7528;Editor&#x3002;&#x5982;&#x679C;&#x4F60;&#x9700;&#x8981;&#x7ED9;&#x5173;&#x5361;&#x8BBE;&#x8BA1;&#x5E08;&#x5236;&#x4F5C;&#x4E00;&#x4E2A;&#x5173;&#x5361;&#x7F16;&#x8F91;&#x5668;&#xFF0C;&#x90A3;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x4F7F;&#x7528;EditorWindow&#x3002;</p>
+<p>&#x5199;&#x5F97;&#x6BD4;&#x8F83;&#x591A;&#xFF0C;&#x4EE5;&#x4E0A;&#x8FD9;&#x4E2A;&#x5C31;&#x662F;&#x6211;&#x5728;&#x4F7F;&#x7528;Unity&#x62D3;&#x5C55;&#x7F16;&#x8F91;&#x5668;&#x7684;&#x603B;&#x7ED3;&#x4E0E;&#x9047;&#x5230;&#x7684;&#x4E00;&#x4E9B;&#x95EE;&#x9898;&#x7684;&#x7ECF;&#x9A8C;&#x3002; </p>
+<p>&#x793A;&#x4F8B;Github&#x4ED3;&#x5E93;&#xFF1A; <a href="https://github.com/zengzhining/EditorTutorial" target="_blank">EditorTutorial</a></p>
+<h1 id="&#x63A8;&#x8350;&#x8D44;&#x6E90;">&#x63A8;&#x8350;&#x8D44;&#x6E90;</h1>
+<p><a href="https://www.packtpub.com/game-development/extending-unity-editor-scripting" target="_blank">Extending Unity with Editor Scripting</a></p>
+<p><a href="https://www.amazon.com/gp/product/B01EM3T0EM?ref_=kin_pc_dp" target="_blank">unity editor extension manual(&#x65E5;&#x6587;&#xFF0C;&#x770B;&#x6837;&#x7AE0;&#x4E0D;&#x9519;&#xFF0C;&#x53EF;&#x53EA;&#x770B;&#x4EE3;&#x7801;)</a></p>
+<p><a href="https://www.youtube.com/playlist?list=PLFt_AvWsXl0eIlJX7u-zBtwWcE1HhKq17" target="_blank">(Youtube) Sebastian Lague&#x7684;Extending the Editor&#x7CFB;&#x5217;</a></p>
+<p><a href="https://github.com/dbrizov/NaughtyAttributes" target="_blank">NaughtyAttribute</a></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 序">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Unity拓展编辑器入门指南","level":"1.2","depth":1,"previous":{"title":"序","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"EditorTutorial.md","mtime":"2020-02-26T12:23:00.714Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-26T12:24:12.179Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
